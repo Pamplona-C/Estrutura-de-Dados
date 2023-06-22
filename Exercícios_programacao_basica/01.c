@@ -2,13 +2,14 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <math.h>
 
 //Dada uma sequencia de números não nulos, imprimir seu quadrado.
 
 int main(){
     int num[5],i = 0;
 
-    printf("Digite uma sequencia de numeros nao nulos : \n");
+    printf("Digite 5 numeros nao nulos : \n");
     while (i < 5)
     {
         scanf("%d",&num[i]);
@@ -20,6 +21,32 @@ int main(){
         
         i++;
     }
+
+    system("cls");
+
+     printf("Os numeros digitados foram : ");
+    for ( i = 0; i < 5; i++)
+    {
+        printf(" %d ",num[i]);
+    }
+
+    printf("\n");
+
+    int result[5];
+
+    for ( i = 0; i < 5; i++)
+    {
+        result[i] = num[i] * num[i];
+    }
+    
+    printf("Os valores elevados ao quadrado : ");
+    for ( i = 0; i < 5; i++)
+    {
+        printf("%d, ",result[i]);
+    }
+    
+    
+    
     
     return 0;
 }
