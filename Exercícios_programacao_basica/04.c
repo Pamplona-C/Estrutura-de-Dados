@@ -4,6 +4,8 @@
 #include <string.h>
 #include <math.h>
 
+//Uma pessoa aplicou um capital de x taoqueis a juros mensais de z durante 1 ano.Determinar o montante de cada mês durante este período.
+
 double calc_juros_simples(double x, double z, int meses) {
     double juros = x * (z/100) * meses;
     return juros;
