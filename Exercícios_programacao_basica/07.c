@@ -74,10 +74,5 @@ int main(){
     printf("O produto escalar dos vetores V1 e V2 = %d\n",result);
 
 
-    
-
-
-    
-
     return 0;
 }
