@@ -15,13 +15,11 @@ void calc_dias(ficha pessoa){
     int year = 365;
     int dias = pessoa.idade * year;
 
-    printf("%s você já viveu %d dias.\n",pessoa.nome,dias);
+    printf("%s voce ja viveu %d dias.\n",pessoa.nome,dias);
 }
 
 
 int main(){
-
-    setlocale(LC_ALL, "pt-br");
 
     system("clear");
 
