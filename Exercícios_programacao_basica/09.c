@@ -24,7 +24,6 @@ int main(){
     system("clear");
 
     ficha pessoa;
-    int dias;
     
     printf("Digite seu nome : ");
     scanf("%s",&pessoa.nome);
