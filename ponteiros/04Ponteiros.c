@@ -6,29 +6,22 @@ vetor. Esse programa deve conter ponteiros para manusear o vetor e imprimir os s
 valores. Esse programa deve conter ponteiros também para apresentar o maior e o
 menor número do vetor.*/
 
-void maior_menor(int *p){
+void maior_menor(int *p) {
+    int maior = 0;
+    int menor = p[0]; // Inicializa com o primeiro elemento do vetor
 
-    int maior = 0, menor;
-
-    for (int i = 0; i < 4; i++)
-    {
-        if (p[i] > maior)
-        {
+    for (int i = 0; i < 4; i++) {
+        if (p[i] > maior) {
             maior = p[i];
         }
-    }
 
-    for (int i = 0; i < 4; i++)
-    {
-        if (p[i] < menor)
-        {
+        if (p[i] < menor) {
             menor = p[i];
         }
-        
     }
-    printf("O maior número é %d",maior);
-    printf("\nO menor número é %d.",menor);
-    
+
+    printf("O maior número é %d\n", maior);
+    printf("O menor número é %d.\n", menor);
 }
 
 int main(){
