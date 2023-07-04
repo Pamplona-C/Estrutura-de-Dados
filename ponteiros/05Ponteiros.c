@@ -10,12 +10,20 @@ int main(){
 
     char frase[50];
     char *p = &frase;
+    int cont = 0;
 
     printf("Digite uma frase : \n");
     fgets(frase, 50, stdin);
 
-    printf("%s",frase);
+    for (int i = 0; i < strlen(frase); i++)
+    {
+        if (p[i] != '\0' && p[i] != ' ')
+        {
+            cont++;
+        }
+    }
 
+    printf("A frase tem %d caracteres.",cont - 1);
 
     return 0;
 }
