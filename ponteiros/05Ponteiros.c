@@ -15,7 +15,7 @@ int main(){
     printf("Digite uma frase : \n");
     fgets(frase, 50, stdin);
 
-    for (int i = 0; i < strlen(frase); i++)
+    for (int i = 0; i < 50; i++)
     {
         if (p[i] != '\0' && p[i] != ' ')
         {
