@@ -1,1 +1,1 @@
-![image](/Exerc%C3%ADcios_programacao_basica/assets/Aula_2_-_Exerccios.pdf)
+![pdf](/Exerc%C3%ADcios_programacao_basica/assets/Aula_2_-_Exerccios.pdf)
