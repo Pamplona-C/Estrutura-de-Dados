@@ -20,7 +20,7 @@ void calc_mult(int *a, int *b){
 
 void calc_div(int *a, int *b){
     double div = (double) *a / *b;
-    printf("A divisão é %lf\n",div);
+    printf("A divisão é %.2lf\n",div);
 }
 
 
@@ -28,7 +28,7 @@ int main(){
 
     system("clear");
 
-    //setlocale();
+    setlocale(LC_ALL, "Portuguese");
 
     int p1,p2;
 
