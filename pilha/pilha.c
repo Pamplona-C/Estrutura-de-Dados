@@ -29,6 +29,7 @@ void decrementa(pilhaItem p[5]){
 
 
 int main(){
+    system("clear");//no windows troque o "clear" por "cls" 
     setlocale(LC_ALL, "Portuguese");
 
     //declara a pilha
@@ -38,7 +39,14 @@ int main(){
     
     while (esc != 3)
     {
+        
         printf("\n---PILHA---\n");
+        if (topo < 0)
+        {
+            printf("Pilha Vazia.\n");
+        }else
+        printf("Topo Pilha = %d\n",topo);
+        
         printf("1 - INCREMENTAR PILHA.\n");
         printf("2 - DECREMENTAR PILHA.\n");
         printf("3 - SAIR\n");
@@ -57,18 +65,18 @@ int main(){
             printf("Digite o valor a ser inserido na pilha:\n");
             scanf("%d",&x);
             incrementaPilha(p,x);
-            printf("\nTopo = %d\n",topo);
+            //printf("\nTopo = %d\n",topo);
             break;
         
         case 2:
-            if (topo < 1)
+            if (topo < 0)
             {
                 printf("\nA pilha ja esta vazia.\n");
                 break;
             }
             
             decrementa(p);
-            printf("\nTopo = %d\n",topo);
+            //printf("\nTopo = %d\n",topo);
             break;
         }
     }
