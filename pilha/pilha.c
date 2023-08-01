@@ -39,7 +39,6 @@ int main(){
     
     while (esc != 3)
     {
-        
         printf("\n---PILHA---\n");
         if (topo < 0)
         {
