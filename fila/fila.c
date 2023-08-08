@@ -17,8 +17,8 @@ void enfileirar(filaItem f[5], int valor){
 }
 
 void desenfileirar(filaItem f[5]){
-    f[fim].item = 0;
-    fim--;
+    f[inicio].item = 0;
+    inicio++;
 }
 
 void consultaFila(filaItem f[5]){
