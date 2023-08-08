@@ -5,7 +5,7 @@
 //declara item
 typedef struct{
     int item;
-}pilhaItem;
+}pilhaItem;                                                                                                                             
 
 //inicializa a pilha
 int topo = -1;
