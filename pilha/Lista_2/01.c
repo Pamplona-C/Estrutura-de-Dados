@@ -7,9 +7,37 @@ resolver o problema.*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
 
+typedef struct{
+    char string[50];
+}frasePilha;
+
+int topo = -1;
+int topo2 = -1;
+void incrementa_pilha(frasePilha f[50], int topo, char frase[50]){
+    topo++;
+    for (int i = 0; i <= strlen(frase); i++)
+    {
+        f[topo].string[i] = frase[i];
+    }
+    printf("%s",f);
+}
 
 int main(){
-    
+
+    system("clear");
+    frasePilha f[50],f2[50];
+
+    char frase[50];
+
+    fgets(frase,50,stdin);
+
+    //printf("O tamanho do vetor é %d\n",strlen(frase));
+    //printf("%s",frase);
+
+    incrementa_pilha(f, topo,frase);
+    trocarPilha(f,f2);
+
     return 0;
 }
