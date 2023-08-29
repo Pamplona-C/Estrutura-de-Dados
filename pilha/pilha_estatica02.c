@@ -10,42 +10,39 @@ typedef struct {
 
 void push(Pilha *stack, int value) {
     if (stack->top == MAX_SIZE - 1) {
-        printf("Pilha cheia, não é possível adicionar items. %d\n", value);
+        printf("Pilha cheia, não é possível adicionar itens. %d\n", value);
         return;
     }
 
     stack->top++;
     stack->data[stack->top] = value;
-    display(stack);
 }
 
 int pop(Pilha *stack) {
     if (stack->top == -1) {
-        printf("Stack underflow: cannot pop element\n");
+        printf("Stack underflow: não é possível desempilhar elemento\n");
         return -1;
     }
 
     int value = stack->data[stack->top];
     stack->top--;
-    display(stack);
     return value;
 }
 
-
-int peek(Pilha *stack) {  //visualiza o topo da pilha
+void peek(Pilha *stack) {
     if (stack->top == -1) {
-        printf("Stack is empty\n");
+        printf("A pilha está vazia\n");
         return -1;
     }
 
-    return stack->data[stack->top];
+    printf("Elemento topo = %d.",stack->data[stack->top]);
 }
 
-int isEmpty(Pilha* stack) {
+int isEmpty(Pilha *stack) {
     return stack->top == -1;
 }
 
-void display(Pilha* stack) {
+void display(Pilha *stack) {
     if (isEmpty(stack)) {
         printf("A pilha está vazia.\n");
         return;
@@ -59,44 +56,53 @@ void display(Pilha* stack) {
 }
 
 int main() {
-    Pilha stack; //declara a pilha
-    stack.top = -1; 
+    Pilha stack;
+    stack.top = -1;
 
-    system("clear");//no windows troque o "clear" por "cls" 
     setlocale(LC_ALL, "Portuguese");
-    
-    int esc = 0,x = 0;
-    
-    while (esc != 3)
-    {
+
+    int esc = 0, x = 0;
+
+    while (esc != 5) {
         printf("\n---PILHA---\n");
-        if (stack.top < 0)
-        {
+        if (stack.top < 0) {
             printf("Pilha Vazia.\n");
-        }else
-        printf("Topo Pilha = %d\n",stack.top);
-        
+        } else {
+            printf("Topo da Pilha = %d\n", stack.top);
+            display(&stack);
+        }
+
         printf("1 - INCREMENTAR PILHA.\n");
         printf("2 - DECREMENTAR PILHA.\n");
-        printf("3 - SAIR\n");
+        printf("3 - VISUALIZAR ELEMENTOS DA PILHA.\n");
+        printf("4 - VISUALIZAR ELEMENTO DO TOPO.\n");
+        printf("5 - SAIR.\n");
 
-        scanf("%d",&esc);
+        scanf("%d", &esc);
 
-        switch (esc)
-        {
-        case 1:
-            printf("Digite o valor a ser inserido na pilha:\n");
-            scanf("%d",&x);
-            push(&stack,x);
-            //printf("\nTopo = %d\n",topo);
-            break;
-        
-        case 2:
-            pop(&stack);
-            //printf("\nTopo = %d\n",topo);
-            break;
+        switch (esc) {
+            case 1:
+                printf("Digite o valor a ser inserido na pilha:\n");
+                scanf("%d", &x);
+                push(&stack, x);
+                break;
+
+            case 2:
+                if (!isEmpty(&stack)) {
+                    int poppedValue = pop(&stack);
+                    printf("Elemento desempilhado: %d\n", poppedValue);
+                }
+                break;
+
+            case 3:
+                display(&stack);
+                break;
+            
+            case 4:
+                peek(&stack);
+                break;
         }
     }
-    
+
     return 0;
 }
