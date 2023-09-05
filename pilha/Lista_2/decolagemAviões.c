@@ -34,6 +34,7 @@ void enfileira(Fila *fila, Aviao aviao) {
         fila->fim = (fila->fim + 1) % 10;
         fila->dados[fila->fim] = aviao;
         fila->quantidade++;
+        printf("Um novo avião entrou na Fila de espera !.\n");
     } else {
         printf("A fila de espera está cheia!\n");
     }
@@ -92,7 +93,35 @@ void listaPrimeiroAviao(Fila *fila) {
     }
 }
 
+void inverterFila(Fila *fila) {
+    if (!filaVazia(fila)) {
+        Aviao avioes[10];
+        int i = fila->inicio;
+        int contador = 0;
+
+        while (contador < fila->quantidade) {
+            avioes[contador] = fila->dados[i];
+            i = (i + 1) % 10;
+            contador++;
+        }
+
+        i = fila->inicio;
+        for (int j = contador - 1; j >= 0; j--) {
+            fila->dados[i] = avioes[j];
+            i = (i + 1) % 10;
+        }
+
+        printf("Fila invertida!\n");
+    } else {
+        printf("A fila de espera está vazia!\n");
+    }
+}
+
+
+
+
 int main() {
+    system("cls");
     Fila filaAvioes;
     inicializaFila(&filaAvioes);
 
@@ -103,6 +132,7 @@ int main() {
         printf("3. Adicionar um avião à fila de espera\n");
         printf("4. Listar todos os aviões na fila de espera\n");
         printf("5. Listar as características do primeiro avião da fila\n");
+        printf("7. Inverter Fila.\n");
         printf("6. Sair\n");
         printf("Escolha uma opção: ");
         
@@ -137,6 +167,9 @@ int main() {
             case 6:
                 printf("Encerrando o programa.\n");
                 exit(0);
+            case 7:
+                inverterFila(&filaAvioes);
+                break;  
             default:
                 printf("Opção inválida!\n");
         }
