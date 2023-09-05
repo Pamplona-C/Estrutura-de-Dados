@@ -50,6 +50,45 @@ void printList(struct Noh* head) {
     printf("NULL\n");
 }
 
+//remover o nó do início da lista
+void removeInicio(struct Noh** head) {
+    if (*head == NULL) {
+        printf("A lista está vazia. Nada para remover.\n");
+        return;
+    }
+
+    struct Noh* temp = *head;
+    *head = (*head)->proximo;
+    free(temp);
+}
+
+//remover o nó do fim da lista
+void removeFim(struct Noh** head) {
+    if (*head == NULL) {
+        printf("A lista está vazia. Nada para remover.\n");
+        return;
+    }
+
+    if ((*head)->proximo == NULL) {
+        // Caso especial: há apenas um nó na lista
+        free(*head);
+        *head = NULL;
+        return;
+    }
+
+    struct Noh* atual = *head;
+    struct Noh* anterior = NULL;
+
+    while (atual->proximo != NULL) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    anterior->proximo = NULL;
+    free(atual);
+}
+
+
 
 int main() {
     struct Noh* lista = NULL;
@@ -60,8 +99,10 @@ int main() {
         printf("\nMenu:\n");
         printf("1. Inserir no início\n");
         printf("2. Inserir no final\n");
-        printf("3. Visualizar lista\n");
-        printf("4. Sair\n");
+        printf("3. Remover do início\n");
+        printf("4. Remover do fim\n");
+        printf("5. Visualizar lista\n");
+        printf("6. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &escolha);
 
@@ -77,10 +118,16 @@ int main() {
                 insereFinal(&lista, valor);
                 break;
             case 3:
+                removeInicio(&lista);
+                break;
+            case 4:
+                removeFim(&lista);
+                break;
+            case 5:
                 printf("Lista Encadeada: ");
                 printList(lista);
                 break;
-            case 4:
+            case 6:
                 // Libera a memória alocada para os nós
                 while (lista != NULL) {
                     struct Noh* temp = lista;
