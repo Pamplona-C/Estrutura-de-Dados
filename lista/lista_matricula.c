@@ -13,7 +13,7 @@ typedef struct {
     Aluno* inicio;
 } ListaAlunos;
 
-// Função para criar um novo nó de aluno
+
 Aluno* criaAluno(char nome[], int matricula) {
     Aluno* novoAluno = (Aluno*)malloc(sizeof(Aluno));
     strcpy(novoAluno->nome, nome);
@@ -22,14 +22,14 @@ Aluno* criaAluno(char nome[], int matricula) {
     return novoAluno;
 }
 
-// Função para inserir um novo aluno no início da lista
+
 void insereInicio(ListaAlunos* lista, char nome[], int matricula) {
     Aluno* novoAluno = criaAluno(nome, matricula);
     novoAluno->proximo = lista->inicio;
     lista->inicio = novoAluno;
 }
 
-// Função para inserir um novo aluno no fim da lista
+
 void insereFim(ListaAlunos* lista, char nome[], int matricula) {
     Aluno* novoAluno = criaAluno(nome, matricula);
     
@@ -49,16 +49,16 @@ void insereMeio(ListaAlunos* lista, char nome[], int matricula) {
     Aluno* novoAluno = criaAluno(nome, matricula);
 
     if (lista->inicio == NULL) {
-        // Se a lista estiver vazia, o novo aluno se torna o início da lista
+
         lista->inicio = novoAluno;
     } else {
         Aluno* primeiroAluno = lista->inicio;
         
         if (primeiroAluno->proximo == NULL) {
-            // Se houver apenas um aluno na lista, o novo aluno se torna o segundo aluno
+
             primeiroAluno->proximo = novoAluno;
         } else {
-            // Se houver mais de um aluno na lista, o novo aluno será inserido entre o primeiro e o segundo
+
             novoAluno->proximo = primeiroAluno->proximo;
             primeiroAluno->proximo = novoAluno;
         }
@@ -67,7 +67,7 @@ void insereMeio(ListaAlunos* lista, char nome[], int matricula) {
 
 
 
-// Função para remover o aluno do início da lista
+
 void removeInicio(ListaAlunos* lista) {
     if (lista->inicio == NULL) {
         printf("A lista de alunos está vazia.\n");
@@ -81,7 +81,7 @@ void removeInicio(ListaAlunos* lista) {
 
 
 
-// Função para remover o aluno do fim da lista
+
 void removeFim(ListaAlunos* lista) {
     if (lista->inicio == NULL) {
         printf("A lista de alunos está vazia.\n");
@@ -89,7 +89,7 @@ void removeFim(ListaAlunos* lista) {
     }
     
     if (lista->inicio->proximo == NULL) {
-        // Caso especial: há apenas um aluno na lista
+
         free(lista->inicio);
         lista->inicio = NULL;
         return;
@@ -107,12 +107,9 @@ void removeFim(ListaAlunos* lista) {
     free(atual);
 }
 
-// Função para ordenar a lista de alunos em ordem alfabética pelo nome
-// Função para ordenar a lista de alunos em ordem alfabética pelo nome
-// Função para ordenar a lista de alunos em ordem alfabética pelo nome
+
 void ordenaLista(ListaAlunos* lista) {
     if (lista->inicio == NULL || lista->inicio->proximo == NULL) {
-        // Se a lista estiver vazia ou tiver apenas um aluno, não é necessário ordenar
         return;
     }
 
@@ -128,7 +125,6 @@ void ordenaLista(ListaAlunos* lista) {
             }
         }
 
-        // Troca os elementos se necessário
         if (chave != atual) {
             char tempNome[50];
             int tempMatricula;
@@ -148,7 +144,7 @@ void ordenaLista(ListaAlunos* lista) {
 
 
 
-// Função para imprimir a lista de alunos
+
 void printListaAlunos(ListaAlunos* lista) {
     Aluno* atual = lista->inicio;
     printf("Lista de Alunos:\n");
@@ -171,7 +167,7 @@ int main() {
     insereInicio(&lista, "bia", 02);
     insereInicio(&lista, "carlos", 03);
     insereInicio(&lista, "daniel", 04);
-    //insereInicio(&lista, "eliezer", 05);
+
 
     while (1) {
         printf("Menu:\n");
@@ -221,7 +217,7 @@ int main() {
                 ordenaLista(&lista);
                 break;
             case 8:
-                // Libera a memória alocada para os alunos
+
                 while (lista.inicio != NULL) {
                     removeInicio(&lista);
                 }
