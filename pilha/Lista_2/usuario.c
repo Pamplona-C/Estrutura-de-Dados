@@ -37,9 +37,9 @@ void removeByName(Stack *stack, const char *nameToRemove) {
     initializeStack(&tempStack);
 
     while (stack->top >= 0) {
-        Person currentPerson = pop(stack);
-        if (strcmp(currentPerson.name, nameToRemove) != 0) {
-            push(&tempStack, currentPerson);
+        Person atualPerson = pop(stack);
+        if (strcmp(atualPerson.name, nameToRemove) != 0) {
+            push(&tempStack, atualPerson);
         }
     }
 
@@ -74,8 +74,8 @@ int main() {
 
     printf("Pessoas restantes na pilha:\n");
     while (personStack.top >= 0) {
-        Person currentPerson = pop(&personStack);
-        printf("Nome: %s, Idade: %d\n", currentPerson.name, currentPerson.age);
+        Person atualPerson = pop(&personStack);
+        printf("Nome: %s, Idade: %d\n", atualPerson.name, atualPerson.age);
     }
 
     return 0;
