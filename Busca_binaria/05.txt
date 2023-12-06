@@ -1,0 +1,13 @@
+Função para buscar um elemento numa árvore binária
+
+
+ARV procura(ARV a, int b) {
+    if (EMPTY(a))       // significa que a árvore está vazia ou que o elemento não foi encontrado retornando NULL
+        return NULL;
+    else if (a->info == b) // significa que encontramos o elemento na árvore. Nesse caso, retornamos o ponteiro para esse nó
+        return a;
+    else if (b > a->info)   // o elemento que procuramos deve estar à direita, pois em uma árvore binária de busca, todos os elementos à direita de um nó são maiores que o próprio nó.
+        return procura(a->dir, b);
+    else
+        return procura(a->esq, b); // Igual o anterior porém invertendo os lados para a esquerda.
+}
