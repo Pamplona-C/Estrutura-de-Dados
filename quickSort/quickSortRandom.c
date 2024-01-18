@@ -2,43 +2,34 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+
 void swap(int lista[], int i, int j){
     int temp = lista[i];
     lista[i] = lista[j];
     lista[j]= temp;
 }
 
-int numeroAleatorio(int vetor[], int tamanho){
-    if (tamanho <= 0)
-    {
-        printf("ERRO - VETOR VAZIO");
-        return (EXIT_FAILURE);
-    }
-    srand(time(NULL));
-
-    int indiceAleatorio = rand() % tamanho;
-
-    return vetor[indiceAleatorio];
-}
-
 int partition(int lista[],int left, int right){
 
-    int indiceAleatorio = left + rand() % (right - left + 1);
-
-    int pivot = lista[indiceAleatorio];
+    int range = right - left +1 ;
+    int rand_pivot_index = (rand() % range) + left;
     
+    swap(lista, left, rand_pivot_index);
 
+    int pivot = lista[left];
     int i = left;
-    
 
-    for (int j = left; j <= right; j++)
+    for (int j = left + 1; j <= right; j++)
     {
         if (lista[j] <= pivot)
         {
-            swap(lista,i,j);
             i++;
+            swap(lista,i,j);
+            
         }
     }
+    swap(lista, left, i);
     
     return i;
 }
@@ -63,17 +54,28 @@ void imprimirLista(int lista[], int tam){
 }
 
 int main(){
-    int lista[] = {1,2,3,4,5,10,96,5};
+
+    srand(time(NULL));
+    
+    int lista[] = {96,85,73,45,32,10,1};
 
     int tam = sizeof(lista) / sizeof(lista[0]);
+
+    printf("Tamanho do vetor : %d\n",tam);
 
     printf("Lista antes da Ordenação :");
     imprimirLista(lista,tam);
 
-    quickSort(lista,0,tam);
+    printf("\n");
+
+
+    quickSort(lista, 0, tam - 1);
+
 
     printf("Lista Ordenada :");
     imprimirLista(lista,tam);
+
+    printf("\n");
 
     return 0;
 }
