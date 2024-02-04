@@ -14,47 +14,42 @@ void mergeSort(int lista[], int esq, int dir) {
     }
 }
 
-void merge(int lista[], int esq, int meio, int dir) {
-    int tamanho_esq = meio - esq + 1;
-    int tamanho_dir = dir - meio;
+#include <stdio.h>
 
-    int lista_esq[tamanho_esq];
-    int lista_dir[tamanho_dir];
-
-
-    for (int i = 0; i < tamanho_esq; i++) {
-        lista_esq[i] = lista[esq + i];
-    }
-    for (int j = 0; j < tamanho_dir; j++) {
-        lista_dir[j] = lista[meio + 1 + j];
+void merge(int v[], int left, int middle, int right) {
+    // Transfere os elementos entre left e right para um array auxiliar.
+    int tamanho = right - left + 1;
+    int helper[tamanho];
+    
+    for (int i = 0; i < tamanho; i++) {
+        helper[i] = v[left + i];
     }
 
     int i = 0;
-    int j = 0;
-    int k = esq;
+    int j = middle - left + 1;
+    int k = left;
 
- 
-    while (i < tamanho_esq && j < tamanho_dir) {
-        if (lista_esq[i] <= lista_dir[j]) {
-            lista[k] = lista_esq[i];
+    while (i <= middle - left && j <= right - left) {
+        if (helper[i] <= helper[j]) {
+            v[k] = helper[i];
             i++;
         } else {
-            lista[k] = lista_dir[j];
+            v[k] = helper[j];
             j++;
         }
-        k++;
+        k++;    
     }
 
-    
-    while (i < tamanho_esq) {
-        lista[k] = lista_esq[i];
+    // Se a metade inicial não foi toda consumida, faz o append.
+    while (i <= middle - left) {
+        v[k] = helper[i];
         i++;
         k++;
     }
 
- 
-    while (j < tamanho_dir) {
-        lista[k] = lista_dir[j];
+    // Se a metade final não foi toda consumida, faz o append.
+    while (j <= right - left) {
+        v[k] = helper[j];
         j++;
         k++;
     }
