@@ -61,7 +61,7 @@ void merge(int lista[], int esq, int meio, int dir) {
 }
 
 int main() {
-    int lista[] = {20, 10, 5, 80, 95, 100, 25, 1};
+    int lista[] = {2, 8, 11, 20, 7, 17, 20, 25};
     int tamanho = sizeof(lista) / sizeof(lista[0]);
 
     printf("Array antes da ordenacao:\n");
@@ -71,11 +71,16 @@ int main() {
     printf("\n");
 
     mergeSort(lista, 0, tamanho - 1);
+    printf("\n");
+
 
     printf("Array depois da ordenacao:\n");
     for (int i = 0; i < tamanho; i++) {
         printf("%d ", lista[i]);
     }
+    printf("\n");
+
+
     printf("\n");
 
     return 0;
