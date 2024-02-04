@@ -46,9 +46,16 @@ int main() {
 
     int tam = sizeof(lista) / sizeof(lista[0]);
 
-    quickSort(lista, 0, tam - 1);
-
+    printf("Lista desordenada : \n");
     imprimirLista(lista, tam);
+
+    quickSort(lista, 0, tam - 1);
+    printf("\n");
+
+    printf("Lista Ordenada : \n");
+    imprimirLista(lista, tam);
+
+    printf("\n");
 
     return 0;
 }
