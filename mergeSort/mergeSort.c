@@ -14,10 +14,8 @@ void mergeSort(int lista[], int esq, int dir) {
     }
 }
 
-#include <stdio.h>
 
 void merge(int v[], int left, int middle, int right) {
-    // Transfere os elementos entre left e right para um array auxiliar.
     int tamanho = right - left + 1;
     int helper[tamanho];
     
@@ -28,7 +26,6 @@ void merge(int v[], int left, int middle, int right) {
     int i = 0;
     int j = middle - left + 1;
     int k = left;
-
     while (i <= middle - left && j <= right - left) {
         if (helper[i] <= helper[j]) {
             v[k] = helper[i];
@@ -39,14 +36,12 @@ void merge(int v[], int left, int middle, int right) {
         }
         k++;    
     }
-
     // Se a metade inicial não foi toda consumida, faz o append.
     while (i <= middle - left) {
         v[k] = helper[i];
         i++;
         k++;
     }
-
     // Se a metade final não foi toda consumida, faz o append.
     while (j <= right - left) {
         v[k] = helper[j];
